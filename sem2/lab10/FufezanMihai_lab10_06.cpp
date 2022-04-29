@@ -26,7 +26,6 @@
  */
 
 #include <cmath>
-#include <cstring>
 #include <iostream>
 
 using namespace std;
@@ -37,23 +36,18 @@ protected:
 
 public:
   Shape() {}
-  Shape(char *name) {
-    this->name = new char[strlen(name) + 1];
-    strcpy(this->name, name);
-  }
+  Shape(char *name) { this->name = name; }
   Shape(Shape &s) { *this = s; }
-  ~Shape() { delete[] name; }
+  ~Shape() {}
 
   void operator=(Shape &s) {
     delete[] name;
-    this->name = new char[strlen(name) + 1];
-    strcpy(this->name, name);
+    name = s.getName();
   }
 
   void setName(char *n) {
     delete[] name;
-    name = new char[strlen(n) + 1];
-    strcpy(name, n);
+    name = n;
   }
   char *getName() { return name; }
 };
