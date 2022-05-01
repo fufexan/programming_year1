@@ -8,7 +8,6 @@
  * coefficients being represented as real numbers.
  */
 
-#include <cstring>
 #include <iostream>
 
 using namespace std;
@@ -18,34 +17,30 @@ class Complex {
   char *name;
 
 public:
-  Complex(double re = 1.0, double im = 1.0, char *name = (char*)"Unknown") {
+  Complex(double re = 1.0, double im = 1.0, char *name = (char *)"Unknown") {
     real = re;
     imag = im;
 
-    this->name = new char[sizeof(name) + 1];
-    strcpy(this->name, name);
+    this->name = name;
   }
   Complex(Complex const &x) {
     real = x.real;
     imag = x.imag;
 
-    this->name = new char[sizeof(x.name) + 1];
-    strcpy(name, x.name);
+    name = x.name;
   }
-  ~Complex() { delete[] name; }
 
   double getReal() { return real; }
   double getImag() { return imag; }
   void setReal(double x) { real = x; }
   void setImag(double x) { imag = x; }
   char *getName() { return name; }
-  void setName(char *x) { strcpy(name, x); }
+  void setName(char *x) { name = x; }
 
   void operator=(Complex const &x) {
     real = x.real;
     imag = x.imag;
-    this->name = new char[sizeof(x.name) + 1];
-    strcpy(name, x.name);
+    name = x.name;
   }
 
   Complex operator+(Complex x) {
