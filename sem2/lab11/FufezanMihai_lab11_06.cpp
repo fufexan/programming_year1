@@ -19,4 +19,45 @@
 using namespace std;
 #include "FufezanMihai_lab11_06.hpp"
 
-int main() {}
+int main() {
+  PlaylistImplementation pl;
+  char title[50], artist[50];
+  int n, d;
+
+  cout << "Enter the number of records you want to add: ";
+  cin >> n;
+
+  cout << "\nEnter the records:\n";
+  for (int i{}; i < n; i++) {
+    cout << "\nRecord #" << i << "\n";
+    cout << "Title: ";
+    cin.ignore();
+    cin.getline(title, 50);
+    cout << "Artist: ";
+    cin.getline(artist, 50);
+    cout << "Duration: ";
+    cin >> d;
+
+    pl.setRecord(title, artist, d);
+  }
+
+  char choice;
+  do {
+    cout << "\nHow do you want to sort the playlist?\na - artist\nt - title\nd "
+            "- duration\nq - quit: ";
+    cin >> choice;
+
+    // handle quit
+    if (choice == 'q')
+      break;
+
+    pl.sort(choice);
+
+    for (int i{}; i < n; i++) {
+      cout << "\nRecord #" << i << "\n";
+      cout << "Title: " << pl.getRecord(i).getTitle() << '\n';
+      cout << "Artist: " << pl.getRecord(i).getArtist() << '\n';
+      cout << "Duration: " << pl.getRecord(i).getDuration() << '\n';
+    }
+  } while (choice != 'q');
+}

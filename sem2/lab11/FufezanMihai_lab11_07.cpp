@@ -21,4 +21,39 @@
 
 using namespace std;
 
-int main() {}
+#include "FufezanMihai_lab11_07.hpp"
+
+int main() {
+  ActualQuadrilateral aq;
+  int x, y;
+  Point a, b, c, d;
+
+  cout << "Enter 4 points (x y):\n";
+
+  cout << "Point #1: ";
+  cin >> x >> y;
+  a.setX(x);
+  a.setY(y);
+
+  cout << "Point #2: ";
+  cin >> x >> y;
+  b.setX(x);
+  b.setY(y);
+
+  cout << "Point #3: ";
+  cin >> x >> y;
+  c.setX(x);
+  c.setY(y);
+
+  cout << "Point #4: ";
+  cin >> x >> y;
+  d.setX(x);
+  d.setY(y);
+
+  aq.setPoints(a, b, c, d);
+
+  cout << "\nPerimeter: " << aq.perim();
+  float area = aq.area();
+  if (area)
+    cout << "\nArea: " << area;
+}
