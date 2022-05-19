@@ -40,15 +40,9 @@ public:
   Shape(Shape &s) { *this = s; }
   ~Shape() {}
 
-  void operator=(Shape &s) {
-    delete[] name;
-    name = s.getName();
-  }
+  void operator=(Shape &s) { name = s.getName(); }
 
-  void setName(char *n) {
-    delete[] name;
-    name = n;
-  }
+  void setName(char *n) { name = n; }
   char *getName() { return name; }
 };
 
